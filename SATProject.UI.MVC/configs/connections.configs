@@ -1,0 +1,11 @@
+﻿<connectionStrings>
+
+<add name="SATProjectEntities" 
+     connectionString="metadata=res://*/SATProjectEntityModel.csdl|res://*/SATProjectEntityModel.ssdl|res://*/SATProjectEntityModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=.\sqlexpress;initial catalog=SATProject;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" 
+     providerName="System.Data.EntityClient" />
+
+<add name="DefaultConnection" 
+     connectionString="Data Source=.\sqlexpress;Initial Catalog=SATProject;Integrated Security=true" 
+     providerName="System.Data.SqlClient" />
+
+  </connectionStrings>
