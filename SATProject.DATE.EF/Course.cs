@@ -12,12 +12,12 @@ namespace SATProject.DATE.EF
     using System;
     using System.Collections.Generic;
     
-    public partial class Courses
+    public partial class Course
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Courses()
+        public Course()
         {
-            this.ScheduledClasses = new HashSet<ScheduledClasses>();
+            this.ScheduledClasses = new HashSet<ScheduledClass>();
         }
     
         public int CourseId { get; set; }
@@ -29,6 +29,6 @@ namespace SATProject.DATE.EF
         public bool IsActive { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ScheduledClasses> ScheduledClasses { get; set; }
+        public virtual ICollection<ScheduledClass> ScheduledClasses { get; set; }
     }
 }

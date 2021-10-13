@@ -25,11 +25,11 @@ namespace SATProject.DATE.EF
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Courses> Courses { get; set; }
+        public virtual DbSet<Course> Courses { get; set; }
         public virtual DbSet<Enrollment> Enrollments { get; set; }
-        public virtual DbSet<ScheduledClasses> ScheduledClasses1 { get; set; }
-        public virtual DbSet<ScheduledClassStatuses> ScheduledClassStatuses { get; set; }
-        public virtual DbSet<Students> Students1 { get; set; }
-        public virtual DbSet<StudentStatuses> StudentStatuses { get; set; }
+        public virtual DbSet<ScheduledClass> ScheduledClasses { get; set; }
+        public virtual DbSet<ScheduledClassStatus> ScheduledClassStatus { get; set; }
+        public virtual DbSet<Student> Students { get; set; }
+        public virtual DbSet<StudentStatus> StudentStatus { get; set; }
     }
 }

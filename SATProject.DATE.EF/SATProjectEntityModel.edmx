@@ -163,7 +163,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SATProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Courses">
+        <EntityType Name="Course">
           <Key>
             <PropertyRef Name="CourseId" />
           </Key>
@@ -187,7 +187,7 @@
           <NavigationProperty Name="ScheduledClass" Relationship="Self.FK_Enrollments_ScheduledClasses" FromRole="Enrollments" ToRole="ScheduledClasses" />
           <NavigationProperty Name="Student" Relationship="Self.FK_Enrollments_Students" FromRole="Enrollments" ToRole="Students" />
         </EntityType>
-        <EntityType Name="ScheduledClasses">
+        <EntityType Name="ScheduledClass">
           <Key>
             <PropertyRef Name="ScheduledClassId" />
           </Key>
@@ -202,7 +202,7 @@
           <NavigationProperty Name="Enrollments" Relationship="Self.FK_Enrollments_ScheduledClasses" FromRole="ScheduledClasses" ToRole="Enrollments" />
           <NavigationProperty Name="ScheduledClassStatus" Relationship="Self.FK_ScheduledClasses_ScheduledClassStatuses" FromRole="ScheduledClasses" ToRole="ScheduledClassStatuses" />
         </EntityType>
-        <EntityType Name="ScheduledClassStatuses">
+        <EntityType Name="ScheduledClassStatus">
           <Key>
             <PropertyRef Name="SCSID" />
           </Key>
@@ -210,7 +210,7 @@
           <Property Name="SCSName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="ScheduledClasses" Relationship="Self.FK_ScheduledClasses_ScheduledClassStatuses" FromRole="ScheduledClassStatuses" ToRole="ScheduledClasses" />
         </EntityType>
-        <EntityType Name="Students">
+        <EntityType Name="Student">
           <Key>
             <PropertyRef Name="StudentID" />
           </Key>
@@ -229,7 +229,7 @@
           <NavigationProperty Name="Enrollments" Relationship="Self.FK_Enrollments_Students" FromRole="Students" ToRole="Enrollments" />
           <NavigationProperty Name="StudentStatus" Relationship="Self.FK_Students_StudentStatuses" FromRole="Students" ToRole="StudentStatuses" />
         </EntityType>
-        <EntityType Name="StudentStatuses">
+        <EntityType Name="StudentStatus">
           <Key>
             <PropertyRef Name="SSID" />
           </Key>
@@ -239,8 +239,8 @@
           <NavigationProperty Name="Students" Relationship="Self.FK_Students_StudentStatuses" FromRole="StudentStatuses" ToRole="Students" />
         </EntityType>
         <Association Name="FK_ScheduledClasses_Courses">
-          <End Role="Courses" Type="SATProjectModel.Courses" Multiplicity="1" />
-          <End Role="ScheduledClasses" Type="SATProjectModel.ScheduledClasses" Multiplicity="*" />
+          <End Role="Courses" Type="SATProjectModel.Course" Multiplicity="1" />
+          <End Role="ScheduledClasses" Type="SATProjectModel.ScheduledClass" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Courses">
               <PropertyRef Name="CourseId" />
@@ -251,7 +251,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Enrollments_ScheduledClasses">
-          <End Role="ScheduledClasses" Type="SATProjectModel.ScheduledClasses" Multiplicity="0..1" />
+          <End Role="ScheduledClasses" Type="SATProjectModel.ScheduledClass" Multiplicity="0..1" />
           <End Role="Enrollments" Type="Self.Enrollment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ScheduledClasses">
@@ -263,7 +263,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Enrollments_Students">
-          <End Role="Students" Type="SATProjectModel.Students" Multiplicity="1" />
+          <End Role="Students" Type="SATProjectModel.Student" Multiplicity="1" />
           <End Role="Enrollments" Type="Self.Enrollment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Students">
@@ -275,8 +275,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ScheduledClasses_ScheduledClassStatuses">
-          <End Role="ScheduledClassStatuses" Type="SATProjectModel.ScheduledClassStatuses" Multiplicity="1" />
-          <End Role="ScheduledClasses" Type="SATProjectModel.ScheduledClasses" Multiplicity="*" />
+          <End Role="ScheduledClassStatuses" Type="SATProjectModel.ScheduledClassStatus" Multiplicity="1" />
+          <End Role="ScheduledClasses" Type="SATProjectModel.ScheduledClass" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ScheduledClassStatuses">
               <PropertyRef Name="SCSID" />
@@ -287,8 +287,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Students_StudentStatuses">
-          <End Role="StudentStatuses" Type="SATProjectModel.StudentStatuses" Multiplicity="1" />
-          <End Role="Students" Type="SATProjectModel.Students" Multiplicity="*" />
+          <End Role="StudentStatuses" Type="SATProjectModel.StudentStatus" Multiplicity="1" />
+          <End Role="Students" Type="SATProjectModel.Student" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="StudentStatuses">
               <PropertyRef Name="SSID" />
@@ -299,31 +299,31 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="SATProjectEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Courses" EntityType="SATProjectModel.Courses" />
+          <EntitySet Name="Courses1" EntityType="SATProjectModel.Course" />
           <EntitySet Name="Enrollments" EntityType="Self.Enrollment" />
-          <EntitySet Name="ScheduledClasses1" EntityType="SATProjectModel.ScheduledClasses" />
-          <EntitySet Name="ScheduledClassStatuses" EntityType="SATProjectModel.ScheduledClassStatuses" />
-          <EntitySet Name="Students1" EntityType="SATProjectModel.Students" />
-          <EntitySet Name="StudentStatuses" EntityType="SATProjectModel.StudentStatuses" />
+          <EntitySet Name="ScheduledClasses" EntityType="SATProjectModel.ScheduledClass" />
+          <EntitySet Name="ScheduledClassStatus" EntityType="SATProjectModel.ScheduledClassStatus" />
+          <EntitySet Name="Students" EntityType="SATProjectModel.Student" />
+          <EntitySet Name="StudentStatus" EntityType="SATProjectModel.StudentStatus" />
           <AssociationSet Name="FK_ScheduledClasses_Courses" Association="Self.FK_ScheduledClasses_Courses">
-            <End Role="Courses" EntitySet="Courses" />
-            <End Role="ScheduledClasses" EntitySet="ScheduledClasses1" />
+            <End Role="Courses" EntitySet="Courses1" />
+            <End Role="ScheduledClasses" EntitySet="ScheduledClasses" />
           </AssociationSet>
           <AssociationSet Name="FK_Enrollments_ScheduledClasses" Association="Self.FK_Enrollments_ScheduledClasses">
-            <End Role="ScheduledClasses" EntitySet="ScheduledClasses1" />
+            <End Role="ScheduledClasses" EntitySet="ScheduledClasses" />
             <End Role="Enrollments" EntitySet="Enrollments" />
           </AssociationSet>
           <AssociationSet Name="FK_Enrollments_Students" Association="Self.FK_Enrollments_Students">
-            <End Role="Students" EntitySet="Students1" />
+            <End Role="Students" EntitySet="Students" />
             <End Role="Enrollments" EntitySet="Enrollments" />
           </AssociationSet>
           <AssociationSet Name="FK_ScheduledClasses_ScheduledClassStatuses" Association="Self.FK_ScheduledClasses_ScheduledClassStatuses">
-            <End Role="ScheduledClassStatuses" EntitySet="ScheduledClassStatuses" />
-            <End Role="ScheduledClasses" EntitySet="ScheduledClasses1" />
+            <End Role="ScheduledClassStatuses" EntitySet="ScheduledClassStatus" />
+            <End Role="ScheduledClasses" EntitySet="ScheduledClasses" />
           </AssociationSet>
           <AssociationSet Name="FK_Students_StudentStatuses" Association="Self.FK_Students_StudentStatuses">
-            <End Role="StudentStatuses" EntitySet="StudentStatuses" />
-            <End Role="Students" EntitySet="Students1" />
+            <End Role="StudentStatuses" EntitySet="StudentStatus" />
+            <End Role="Students" EntitySet="Students" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -332,8 +332,8 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="SATProjectModelStoreContainer" CdmEntityContainer="SATProjectEntities">
-          <EntitySetMapping Name="Courses">
-            <EntityTypeMapping TypeName="SATProjectModel.Courses">
+          <EntitySetMapping Name="Courses1">
+            <EntityTypeMapping TypeName="SATProjectModel.Course">
               <MappingFragment StoreEntitySet="Courses">
                 <ScalarProperty Name="CourseId" ColumnName="CourseId" />
                 <ScalarProperty Name="CourseName" ColumnName="CourseName" />
@@ -355,8 +355,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ScheduledClasses1">
-            <EntityTypeMapping TypeName="SATProjectModel.ScheduledClasses">
+          <EntitySetMapping Name="ScheduledClasses">
+            <EntityTypeMapping TypeName="SATProjectModel.ScheduledClass">
               <MappingFragment StoreEntitySet="ScheduledClasses">
                 <ScalarProperty Name="ScheduledClassId" ColumnName="ScheduledClassId" />
                 <ScalarProperty Name="CourseId" ColumnName="CourseId" />
@@ -368,16 +368,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ScheduledClassStatuses">
-            <EntityTypeMapping TypeName="SATProjectModel.ScheduledClassStatuses">
+          <EntitySetMapping Name="ScheduledClassStatus">
+            <EntityTypeMapping TypeName="SATProjectModel.ScheduledClassStatus">
               <MappingFragment StoreEntitySet="ScheduledClassStatuses">
                 <ScalarProperty Name="SCSID" ColumnName="SCSID" />
                 <ScalarProperty Name="SCSName" ColumnName="SCSName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Students1">
-            <EntityTypeMapping TypeName="SATProjectModel.Students">
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="SATProjectModel.Student">
               <MappingFragment StoreEntitySet="Students">
                 <ScalarProperty Name="StudentID" ColumnName="StudentID" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -394,8 +394,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="StudentStatuses">
-            <EntityTypeMapping TypeName="SATProjectModel.StudentStatuses">
+          <EntitySetMapping Name="StudentStatus">
+            <EntityTypeMapping TypeName="SATProjectModel.StudentStatus">
               <MappingFragment StoreEntitySet="StudentStatuses">
                 <ScalarProperty Name="SSID" ColumnName="SSID" />
                 <ScalarProperty Name="SSName" ColumnName="SSName" />

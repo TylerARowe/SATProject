@@ -19,7 +19,7 @@ namespace SATProject.DATE.EF
         public Nullable<int> ScheduledClassId { get; set; }
         public System.DateTime EnrollmentDate { get; set; }
     
-        public virtual ScheduledClasses ScheduledClass { get; set; }
-        public virtual Students Student { get; set; }
+        public virtual ScheduledClass ScheduledClass { get; set; }
+        public virtual Student Student { get; set; }
     }
 }
