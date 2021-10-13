@@ -10,7 +10,6 @@ namespace SATProject.DATE.EF
     [MetadataType(typeof(CourseMetadata))]
     public partial class Course
     {
-
     }
     public class CourseMetadata
     {
@@ -42,7 +41,7 @@ namespace SATProject.DATE.EF
     }
 
     [MetadataType(typeof(ScheduledClassesMetadata))]
-    public partial class ScheduledClasses
+    public partial class ScheduledClass
     {
     }
     public class ScheduledClassesMetadata
