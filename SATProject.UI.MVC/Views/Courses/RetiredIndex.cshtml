@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<SATProject.DATE.EF.Course>
 
 @{
-    ViewBag.Title = "Active Courses";
+    ViewBag.Title = "Retired Courses";
 }
 
 <h2>@ViewBag.Title</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create") |
-    @Html.ActionLink("Retired Courses", "RetiredIndex")
+    @Html.ActionLink("Active Courses", "Index")
 </p>
 <table class="table">
     <tr>
@@ -35,7 +35,7 @@
 
     @foreach (var item in Model)
     {
-        if (item.IsActive == true)
+        if (item.IsActive == false)
         {
             <tr>
                 <td>

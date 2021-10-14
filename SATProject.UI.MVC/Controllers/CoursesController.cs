@@ -21,6 +21,12 @@ namespace SATProject.UI.MVC.Controllers
             return View(db.Courses.ToList());
         }
 
+        [Authorize(Roles = "Admin")]
+        public ActionResult RetiredIndex()
+        {
+            return View(db.Courses.ToList());
+        }
+
         // GET: Courses/Details/5
         [Authorize(Roles = "Admin")]
         public ActionResult Details(int? id)

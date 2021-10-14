@@ -144,6 +144,7 @@ namespace SATProject.DATE.EF
         [StringLength(50, ErrorMessage = "Max 50 Characters")]
         public string Email { get; set; }
 
+        [Display(Name = "Student Image")]
         [StringLength(100, ErrorMessage = "Max 100 Characters")]
         public string PhotoUrl { get; set; }
 

@@ -7,8 +7,8 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create") |
-    @Html.ActionLink("Tile View", "IndexTile")
+    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("List View", "Index")
 </p>
 <table class="table">
     <tr>
@@ -31,11 +31,11 @@
         </td>
         @if (User.IsInRole("Admin"))
         {
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.SSID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.SSID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.SSID })
-        </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.SSID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.SSID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.SSID })
+            </td>
         }
     </tr>
 }

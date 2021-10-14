@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SATProject.DATE.EF;
+using SATProject.UI.MVC.Utilities;
 
 namespace SATProject.UI.MVC.Controllers
 {
@@ -52,11 +54,31 @@ namespace SATProject.UI.MVC.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Create([Bind(Include = "StudentID,FirstName,LastName,Major,Address,City,State,ZipCode,Phone,Email,PhotoUrl,SSID")] Student student)
+        public ActionResult Create([Bind(Include = "StudentID,FirstName,LastName,Major,Address,City,State,ZipCode,Phone,Email,PhotoUrl,SSID")] Student student, HttpPostedFileBase studentImg)
         {
+
+
             if (ModelState.IsValid)
             {
-                db.Students.Add(student);
+
+                string file = "NoImage.png";
+                if (studentImg != null)
+                {
+                    file = studentImg.FileName;
+                    string ext = file.Substring(file.LastIndexOf("."));                    string[] goodExts = { ".jpg", ".jpeg", ".png", ".gif" };
+                    if (goodExts.Contains(ext))                    {                        file = Guid.NewGuid() + ext;
+                        string savePath = Server.MapPath("~/Content/imgstore/studentpics/");
+                        Image convertedImage = Image.FromStream(studentImg.InputStream);
+                        int maxImageSize = 500;
+                        int maxThumbSize = 100;
+                        ImageUtility.ResizeImage(savePath, file, convertedImage, maxImageSize, maxThumbSize);
+
+                    }
+                    else                    {                        file = "NoImage.png";                    }
+                    student.PhotoUrl = file;
+                }
+
+                    db.Students.Add(student);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
