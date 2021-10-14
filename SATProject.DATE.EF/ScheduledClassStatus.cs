@@ -12,29 +12,18 @@ namespace SATProject.DATE.EF
     using System;
     using System.Collections.Generic;
     
-    public partial class Students
+    public partial class ScheduledClassStatus
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Students()
+        public ScheduledClassStatus()
         {
-            this.Enrollments = new HashSet<Enrollment>();
+            this.ScheduledClasses = new HashSet<ScheduledClass>();
         }
     
-        public int StudentID { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Major { get; set; }
-        public string Address { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string ZipCode { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
-        public string PhotoUrl { get; set; }
-        public int SSID { get; set; }
+        public int SCSID { get; set; }
+        public string SCSName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Enrollment> Enrollments { get; set; }
-        public virtual StudentStatuses StudentStatus { get; set; }
+        public virtual ICollection<ScheduledClass> ScheduledClasses { get; set; }
     }
 }
