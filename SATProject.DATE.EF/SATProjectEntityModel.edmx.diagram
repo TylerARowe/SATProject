@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d8dd0b47ae3c411bb8a1c2e538e52923" Name="Diagram1">
+      <Diagram DiagramId="d8dd0b47ae3c411bb8a1c2e538e52923" Name="Diagram1" ZoomLevel="55">
         <EntityTypeShape EntityType="SATProjectModel.Courses" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="SATProjectModel.Enrollment" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SATProjectModel.ScheduledClasses" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
