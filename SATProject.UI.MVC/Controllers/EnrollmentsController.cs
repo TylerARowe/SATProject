@@ -15,6 +15,7 @@ namespace SATProject.UI.MVC.Controllers
         private SATProjectEntities db = new SATProjectEntities();
 
         // GET: Enrollments
+        [Authorize(Roles = "Admin, Scheduling")]
         public ActionResult Index()
         {
             var enrollments = db.Enrollments.Include(e => e.ScheduledClass).Include(e => e.Student);
@@ -22,6 +23,7 @@ namespace SATProject.UI.MVC.Controllers
         }
 
         // GET: Enrollments/Details/5
+        [Authorize(Roles = "Admin, Scheduling")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +39,7 @@ namespace SATProject.UI.MVC.Controllers
         }
 
         // GET: Enrollments/Create
+        [Authorize(Roles = "Admin, Scheduling")]
         public ActionResult Create()
         {
             ViewBag.ScheduledClassId = new SelectList(db.ScheduledClasses, "ScheduledClassId", "InstructorName");
@@ -49,6 +52,7 @@ namespace SATProject.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Scheduling")]
         public ActionResult Create([Bind(Include = "EnrollmentId,StudentID,ScheduledClassId,EnrollmentDate")] Enrollment enrollment)
         {
             if (ModelState.IsValid)
@@ -64,6 +68,7 @@ namespace SATProject.UI.MVC.Controllers
         }
 
         // GET: Enrollments/Edit/5
+        [Authorize(Roles = "Admin, Scheduling")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -85,6 +90,7 @@ namespace SATProject.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Scheduling")]
         public ActionResult Edit([Bind(Include = "EnrollmentId,StudentID,ScheduledClassId,EnrollmentDate")] Enrollment enrollment)
         {
             if (ModelState.IsValid)
@@ -99,6 +105,7 @@ namespace SATProject.UI.MVC.Controllers
         }
 
         // GET: Enrollments/Delete/5
+        [Authorize(Roles = "Admin, Scheduling")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -116,6 +123,7 @@ namespace SATProject.UI.MVC.Controllers
         // POST: Enrollments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Scheduling")]
         public ActionResult DeleteConfirmed(int id)
         {
             Enrollment enrollment = db.Enrollments.Find(id);
