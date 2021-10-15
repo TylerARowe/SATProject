@@ -1,7 +1,16 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
+@if (!User.IsInRole("Admin") && !User.IsInRole("Scheduling"))
+{
+    <h2>Please Login for Full Functionality</h2>
+    <p>If you are logged in and cant access full functionality this means you don't have a role assigned.</p>
+}
+else
+{
+<h2>Documentation:</h2>
+<embed src="~/Content/SATProjectLabPDF.pdf"/>
+<br />
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -32,3 +41,4 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+} 
