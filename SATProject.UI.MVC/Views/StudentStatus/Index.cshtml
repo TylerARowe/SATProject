@@ -8,6 +8,7 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("List View", "Index")
 </p>
 <table class="table">
     <tr>
@@ -28,11 +29,14 @@
         <td>
             @Html.DisplayFor(modelItem => item.SSDescription)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SSID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SSID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SSID })
-        </td>
+        @if (User.IsInRole("Admin"))
+        {
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.SSID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.SSID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.SSID })
+            </td>
+        }
     </tr>
 }
 

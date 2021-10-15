@@ -1,0 +1,39 @@
+﻿@model IEnumerable<SATProject.DATE.EF.StudentStatus>
+
+@{
+    ViewBag.Title = "Student Status (Tile View)";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create") |
+    @Html.ActionLink("Table View", "Index")
+</p>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 mb-3" style="max-width: 540px;">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.SSName)</h5>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.SSDescription)</p>
+                </div>
+
+                @if (User.IsInRole("Admin"))
+                {<div class="card-footer">
+                        <small>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.SSID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.SSID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.SSID })
+                        </small>
+                    </div>
+                }
+            </div>
+
+        </div>
+
+    }
+</div>
+

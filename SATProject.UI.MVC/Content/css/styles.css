@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*!
 * Start Bootstrap - SB Admin v7.0.3 (https://startbootstrap.com/template/sb-admin)
 * Copyright 2013-2021 Start Bootstrap
@@ -4517,7 +4517,7 @@ textarea.form-control-lg {
   color: #fff;
 }
 
-.card {
+/*.card {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -4672,7 +4672,7 @@ textarea.form-control-lg {
 .card-group > .card:not(:first-child) .card-footer {
     border-bottom-left-radius: 0;
   }
-}
+}*/
 
 .accordion-button {
   position: relative;

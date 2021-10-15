@@ -101,7 +101,8 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
@@ -109,4 +110,8 @@
             @Html.ActionLink("Back to List", "Index")
         </div>
     }
+</div>
+
+<div class="col-md-6">
+    <img src="~/Content/imgstore/books/@Model.PhotoUrl" title="@Model.PhotoUrl" alt="@Model.PhotoUrl cover" />
 </div>

@@ -78,7 +78,10 @@ namespace SATProject.DATE.EF
     [MetadataType(typeof(EnrollmentMetadata))]
     public partial class Enrollment
     {
+        [Display(Name = "Full Class Info")]
+        public string ClassInfo { get { return ScheduledClass.StartDate + " | " + ScheduledClass.EndDate + " | " + ScheduledClass.Cours.CourseName; } }
     }
+
     public class EnrollmentMetadata
     {
 
@@ -88,6 +91,7 @@ namespace SATProject.DATE.EF
         [Required]
         public int StudentID { get; set; }
 
+        [Display(Name = "Scheduled Class Information")]
         public Nullable<int> ScheduledClassId { get; set; }
 
         [Required]
@@ -129,8 +133,7 @@ namespace SATProject.DATE.EF
 
         [StringLength(2, ErrorMessage = "Max 2 Characters")]
         public string State { get; set; }
-
-        [Display(Name = "asdf")]
+        
         [StringLength(10, ErrorMessage = "Max 10 Characters")]
         public string ZipCode { get; set; }
 
@@ -141,6 +144,7 @@ namespace SATProject.DATE.EF
         [StringLength(50, ErrorMessage = "Max 50 Characters")]
         public string Email { get; set; }
 
+        [Display(Name = "Student Image")]
         [StringLength(100, ErrorMessage = "Max 100 Characters")]
         public string PhotoUrl { get; set; }
 
@@ -163,8 +167,10 @@ namespace SATProject.DATE.EF
         [StringLength(30, ErrorMessage = "Max 30 Characters")]
         public string SSName { get; set; }
 
+        
         [Display(Name = "Status Description")]
         [StringLength(250, ErrorMessage = "Max 250 Characters")]
+        [DisplayFormat(NullDisplayText = "Never connected")]
         public string SSDescription { get; set; }
     }
 }

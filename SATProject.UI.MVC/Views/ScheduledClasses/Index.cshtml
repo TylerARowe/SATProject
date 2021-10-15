@@ -52,11 +52,21 @@
         <td>
             @Html.DisplayFor(modelItem => item.ScheduledClassStatus.SCSName)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ScheduledClassId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ScheduledClassId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ScheduledClassId })
-        </td>
+        @if (User.IsInRole("Admin"))
+        {
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ScheduledClassId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ScheduledClassId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ScheduledClassId })
+            </td>
+        }
+        @if (User.IsInRole("Scheduling"))
+        {
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ScheduledClassId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ScheduledClassId }) 
+            </td>
+        }
     </tr>
 }
 
