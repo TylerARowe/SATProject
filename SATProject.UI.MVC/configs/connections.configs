@@ -1,11 +1,11 @@
 ﻿<connectionStrings>
 
 <add name="SATProjectEntities" 
-     connectionString="metadata=res://*/SATProjectEntityModel.csdl|res://*/SATProjectEntityModel.ssdl|res://*/SATProjectEntityModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=.\sqlexpress;initial catalog=SATProject;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" 
+     connectionString="metadata=res://*/SATProjectEntityModel.csdl|res://*/SATProjectEntityModel.ssdl|res://*/SATProjectEntityModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=SQL5090.site4now.net;Initial Catalog=db_a7774a_satproject;User Id=db_a7774a_satproject_admin;Password=Ga11ade425;MultipleActiveResultSets=True;App=EntityFramework&quot;" 
      providerName="System.Data.EntityClient" />
 
 <add name="DefaultConnection" 
-     connectionString="Data Source=.\sqlexpress;Initial Catalog=SATProject;Integrated Security=true" 
+     connectionString="Data Source=SQL5090.site4now.net;Initial Catalog=db_a7774a_satproject;User Id=db_a7774a_satproject_admin;Password=Ga11ade425" 
      providerName="System.Data.SqlClient" />
 
   </connectionStrings>
