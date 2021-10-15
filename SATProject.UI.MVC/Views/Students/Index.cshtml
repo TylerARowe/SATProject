@@ -89,15 +89,15 @@
             @if (User.IsInRole("Admin"))
             {
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.SSID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.SSID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.SSID })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.StudentID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.StudentID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.StudentID })
                 </td>
             }
             @if (User.IsInRole("Scheduling"))
             {
                 <td>
-                    @Html.ActionLink("Details", "Details", new { id = item.SSID })
+                    @Html.ActionLink("Details", "Details", new { id = item.StudentID })
                 </td>
             }           
         </tr>
